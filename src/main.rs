@@ -11,7 +11,6 @@ fn main() {
         return;
     }
 
-    // Skip the exe name
     args.next();
 
     match (args.next(), args.next()) {
