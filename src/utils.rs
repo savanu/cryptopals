@@ -2,6 +2,9 @@ use std::iter::zip;
 
 use base64::{engine::general_purpose, Engine as _};
 
+/**
+ * XOR each bytes in the passed in byte arrays
+ */
 pub fn xor_bytes(a: &[u8], b: &[u8]) -> Vec<u8> {
     assert!(a.len() == b.len(), "XOR arrays are not equal length. Len a: {}, Len b: {}", a.len(), b.len());
     let mut result = Vec::with_capacity(a.len());
