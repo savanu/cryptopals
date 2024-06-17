@@ -3,5 +3,5 @@ package main
 import "cryptopals/setone"
 
 func main() {
-	setone.Run(3)
+	setone.Run(4)
 }
