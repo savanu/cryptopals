@@ -8,9 +8,9 @@ import (
 )
 
 func ChallengeTwo() {
-	arrOne := "-2c0111001f010100061a024b53535009181c"
-	arrTwo := "686974207468652100000c6c277320657965"
-	answer := "746865203b696420646f6e277420706c6179"
+	arrOne := "1c0111001f010100061a024b53535009181c"
+	arrTwo := "686974207468652062756c6c277320657965"
+	answer := "746865206b696420646f6e277420706c6179"
 
 	arrOneBytes, _ := hex.DecodeString(arrOne)
 	arrTwoBytes, _ := hex.DecodeString(arrTwo)

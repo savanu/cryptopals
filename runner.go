@@ -1,7 +1,12 @@
 package main
 
-import "cryptopals/setone"
+import (
+	"cryptopals/setone"
+	"os"
+	"strconv"
+)
 
 func main() {
-	setone.Run(4)
+	arg, _ := strconv.Atoi(os.Args[1])
+	setone.Run(arg)
 }
