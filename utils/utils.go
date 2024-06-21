@@ -61,7 +61,7 @@ func MostProbableKey(xorEnc []byte) []byte {
 	}
 
 	probableKeyArr := make([]byte, len(xorEnc))
-	for i := 0; i < len(xorEnc); i++ {
+	for i := range probableKeyArr {
 		probableKeyArr[i] = byte(probableKey)
 	}
 
