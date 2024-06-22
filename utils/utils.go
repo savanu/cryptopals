@@ -81,34 +81,6 @@ func CommonLetterCount(letters []byte) int {
 
 func is_common_letter(x byte) bool {
 	switch x {
-	case 'E':
-		return true
-	case 'T':
-		return true
-	case 'A':
-		return true
-	case 'O':
-		return true
-	case 'I':
-		return true
-	case 'N':
-		return true
-	case 'S':
-		return true
-	case 'H':
-		return true
-	case 'R':
-		return true
-	case 'D':
-		return true
-	case 'L':
-		return true
-	case 'U':
-		return true
-	case 'C':
-		return true
-	case 'M':
-		return true
 	case 'e':
 		return true
 	case 't':
@@ -133,9 +105,7 @@ func is_common_letter(x byte) bool {
 		return true
 	case 'u':
 		return true
-	case 'c':
-		return true
-	case 'm':
+	case ' ':
 		return true
 	default:
 		return false
