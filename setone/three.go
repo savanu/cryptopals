@@ -11,7 +11,7 @@ func ChallengeThree() {
 	decoded, _ := hex.DecodeString(input)
 
 	probableKey := utils.MostProbableKey(decoded)
-	cipher, _ := utils.XorBytes(probableKey, decoded)
+	cipher, _ := utils.XorBytes(utils.Fill(len(decoded), probableKey), decoded)
 
 	fmt.Printf("Challenge Three: %s\n", string(cipher))
 }

@@ -25,7 +25,7 @@ func ChallengeFour() {
 		line := scanner.Text()
 		decoded, _ := hex.DecodeString(line)
 		probableKey := utils.MostProbableKey(decoded)
-		possibleMatch, _ := utils.XorBytes(probableKey, decoded)
+		possibleMatch, _ := utils.XorBytes(utils.Fill(len(decoded), probableKey), decoded)
 		possibleMatches = append(possibleMatches, possibleMatch)
 		i += 1
 	}

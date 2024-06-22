@@ -43,7 +43,7 @@ func XorBytes(a, b []byte) ([]byte, error) {
 	return result, nil
 }
 
-func MostProbableKey(xorEnc []byte) []byte {
+func MostProbableKey(xorEnc []byte) byte {
 	keyExpanded := make([]byte, len(xorEnc))
 	highest := 0
 	var probableKey int
@@ -60,12 +60,15 @@ func MostProbableKey(xorEnc []byte) []byte {
 		}
 	}
 
-	probableKeyArr := make([]byte, len(xorEnc))
-	for i := range probableKeyArr {
-		probableKeyArr[i] = byte(probableKey)
-	}
+	return byte(probableKey)
+}
 
-	return probableKeyArr
+func Fill[T any](length int, filler T) []T {
+	expanded := make([]T, length)
+	for i := range expanded {
+		expanded[i] = filler
+	}
+	return expanded
 }
 
 func CommonLetterCount(letters []byte) int {
