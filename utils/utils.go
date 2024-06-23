@@ -2,6 +2,17 @@ package utils
 
 import "fmt"
 
+var masks = []byte{
+	0b00000001,
+	0b00000010,
+	0b00000100,
+	0b00001000,
+	0b00010000,
+	0b00100000,
+	0b01000000,
+	0b10000000,
+}
+
 func HammingDistance(a, b []byte) (int, error) {
 	if len(a) != len(b) {
 		return 0, fmt.Errorf("input arrays are not same length. a: %d b: %d", len(a), len(b))
@@ -17,9 +28,7 @@ func HammingDistance(a, b []byte) (int, error) {
 			continue
 		}
 
-		for l := 7; l >= 0; l-- {
-			mask := byte((1 << 7) >> l)
-
+		for _, mask := range masks {
 			if (j & mask) != (k & mask) {
 				distance++
 			}
@@ -29,7 +38,17 @@ func HammingDistance(a, b []byte) (int, error) {
 	return distance, nil
 }
 
-func XorBytes(a, b []byte) ([]byte, error) {
+func XorByteArray(a []byte, b byte) []byte {
+	result := make([]byte, len(a))
+
+	for i, v := range a {
+		result[i] = v ^ b
+	}
+
+	return result
+}
+
+func XorByteArrays(a, b []byte) ([]byte, error) {
 	if len(a) != len(b) {
 		return nil, fmt.Errorf("arrays are not equals length. a: %d, b: %d", len(a), len(b))
 	}
@@ -44,16 +63,11 @@ func XorBytes(a, b []byte) ([]byte, error) {
 }
 
 func MostProbableKey(xorEnc []byte) byte {
-	keyExpanded := make([]byte, len(xorEnc))
 	highest := 0
 	var probableKey int
 
 	for i := 1; i <= 255; i++ {
-		for j := range keyExpanded {
-			keyExpanded[j] = byte(i)
-		}
-
-		text, _ := XorBytes(keyExpanded, xorEnc)
+		text := XorByteArray(xorEnc, byte(i))
 		if count := CommonLetterCount(text); count >= highest {
 			highest = count
 			probableKey = i
@@ -63,18 +77,10 @@ func MostProbableKey(xorEnc []byte) byte {
 	return byte(probableKey)
 }
 
-func Fill[T any](length int, filler T) []T {
-	expanded := make([]T, length)
-	for i := range expanded {
-		expanded[i] = filler
-	}
-	return expanded
-}
-
 func CommonLetterCount(letters []byte) int {
 	count := 0
 	for _, letter := range letters {
-		if is_common_letter(letter) {
+		if isCommonLetter(letter) {
 			count += 1
 		}
 	}
@@ -82,7 +88,7 @@ func CommonLetterCount(letters []byte) int {
 	return count
 }
 
-func is_common_letter(x byte) bool {
+func isCommonLetter(x byte) bool {
 	switch x {
 	case 'e':
 		return true

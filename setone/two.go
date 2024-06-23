@@ -15,7 +15,7 @@ func ChallengeTwo() {
 	arrOneBytes, _ := hex.DecodeString(arrOne)
 	arrTwoBytes, _ := hex.DecodeString(arrTwo)
 
-	resultBytes, _ := utils.XorBytes(arrOneBytes, arrTwoBytes)
+	resultBytes, _ := utils.XorByteArrays(arrOneBytes, arrTwoBytes)
 
 	result := hex.EncodeToString(resultBytes)
 

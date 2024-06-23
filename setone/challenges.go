@@ -14,5 +14,7 @@ func Run(challengeNum int) {
 		ChallengeFive()
 	case 6:
 		ChallengeSix()
+	case 7:
+		ChallengeSeven()
 	}
 }

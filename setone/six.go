@@ -51,10 +51,8 @@ func transpose(blocks [][]byte) [][]byte {
 
 	for i := 0; i < len(transposed); i++ {
 		transposed[i] = make([]byte, len(blocks))
-		inner := 0
-		for _, v := range blocks {
-			transposed[i][inner] = v[i]
-			inner++
+		for j, v := range blocks {
+			transposed[i][j] = v[i]
 		}
 	}
 
