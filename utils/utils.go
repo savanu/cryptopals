@@ -2,7 +2,6 @@ package utils
 
 import (
 	"fmt"
-	"slices"
 )
 
 var masks = []byte{
@@ -122,16 +121,4 @@ func isCommonLetter(x byte) bool {
 	default:
 		return false
 	}
-}
-
-// Perform PCKS#7 padding on the given block
-func PKCS7Padding(block []byte, size int) []byte {
-	padSize := size - (len(block) % size)
-	padded := slices.Clone(block)
-
-	for range padSize {
-		padded = append(padded, byte(padSize))
-	}
-
-	return padded
 }

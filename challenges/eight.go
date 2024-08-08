@@ -1,4 +1,4 @@
-package setone
+package challenges
 
 import (
 	"bufio"
@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func ChallengeEight() {
+func challengeEight() {
 
 	file, err := os.Open("files/challenge_8_data.txt")
 	if err != nil {

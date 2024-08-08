@@ -1,12 +1,12 @@
 package main
 
 import (
-	"cryptopals/setone"
+	"cryptopals/challenges"
 	"os"
 	"strconv"
 )
 
 func main() {
 	arg, _ := strconv.Atoi(os.Args[1])
-	setone.Run(arg)
+	challenges.Run(arg)
 }

@@ -1,4 +1,4 @@
-package setone
+package challenges
 
 import (
 	"crypto/aes"
@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func ChallengeSeven() {
+func challengeSeven() {
 	key := []byte("YELLOW SUBMARINE")
 
 	base64Encoded, err := os.ReadFile("files/challenge_7_data.txt")

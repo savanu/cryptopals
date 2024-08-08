@@ -1,4 +1,4 @@
-package setone
+package challenges
 
 import (
 	"cmp"
@@ -10,7 +10,7 @@ import (
 	"slices"
 )
 
-func ChallengeSix() {
+func challengeSix() {
 	encoded, err := os.ReadFile("files/challenge_6_data.txt")
 	if err != nil {
 		log.Fatalf("Couldn't open file: %s", err.Error())

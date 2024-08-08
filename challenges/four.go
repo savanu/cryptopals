@@ -1,4 +1,4 @@
-package setone
+package challenges
 
 import (
 	"bufio"
@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func ChallengeFour() {
+func challengeFour() {
 	file, err := os.Open("files/challenge_4_data.txt")
 	if err != nil {
 		log.Fatalf("Couldn't open file: %s", err.Error())
