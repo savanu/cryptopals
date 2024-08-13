@@ -1,7 +1,9 @@
 package utils
 
 import (
+	"encoding/base64"
 	"fmt"
+	"slices"
 )
 
 var masks = []byte{
@@ -121,4 +123,30 @@ func isCommonLetter(x byte) bool {
 	default:
 		return false
 	}
+}
+
+func Base64Decode(encoded []byte) []byte {
+	data := make([]byte, base64.StdEncoding.DecodedLen(len(encoded)))
+	dataSize, _ := base64.StdEncoding.Decode(data, encoded)
+	return data[:dataSize]
+}
+
+// Remove PKCS#7 padding
+func PKCS7UnPad(block []byte) []byte {
+	result := slices.Clone(block)
+	size := len(result)
+	unPadSize := int(result[size-1])
+	return result[0 : size-unPadSize]
+}
+
+// Perform PCKS#7 padding on the given block
+func PKCS7Pad(block []byte, size int) []byte {
+	padSize := size - (len(block) % size)
+	padded := slices.Clone(block)
+
+	for range padSize {
+		padded = append(padded, byte(padSize))
+	}
+
+	return padded
 }
